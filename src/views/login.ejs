@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/cosmo/bootstrap.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <main class="vh-100 d-flex justify-content-center align-items-center">
+      <form action="/login" method="POST">
+        <h2 class="text-center text-primary">LogIn</h2>
+        <div class="form-group d-flex flex-column">
+          <div class="form-group">
+            <label for="username" class="form-label mt-4">Correo:</label>
+            <input
+              type="email"
+              name="username"
+              class="form-control"
+              id="username"
+              aria-describedby="emailHelp"
+              placeholder="Email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label mt-4">Password</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="Password"
+              autocomplete="off"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary my-3">Submit</button>
+        </div>
+        <%if (logInMessage) {%>
+        <small class="text-danger"><%= logInMessage %></small>
+        <% } %>
+      </form>
+    </main>
+  </body>
+</html>
