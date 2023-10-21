@@ -1,7 +1,8 @@
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
-import UserModel from '../models/user.js'
 import bcrypt from 'bcrypt'
+import UserModel from '../models/user.js'
+import app from '../app.js'
 
 passport.serializeUser(function (user, done) {
   return done(null, user.id)
@@ -21,7 +22,6 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, username, password, done) => {
-      console.log(req.socket)
       try {
         const userExist = await UserModel.findOne({ email: username })
         if (userExist)
@@ -32,7 +32,10 @@ passport.use(
           )
 
         const hash = await bcrypt.hash(password, 10)
-        const user = await UserModel.create({ email: username, password: hash })
+        const user = await UserModel.create({
+          email: username,
+          password: hash,
+        })
         return done(null, user)
       } catch (e) {
         console.log(e)
@@ -51,8 +54,6 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, username, password, done) => {
-      console.log(req.socket)
-
       try {
         const userDoc = await UserModel.findOne({ email: username })
         if (!userDoc)
@@ -67,7 +68,7 @@ passport.use(
             req.flash('logInMessage', 'Password mismatch')
           )
 
-        return done(null, userDoc, req.flash('logInMessage', 'Login success'))
+        return done(null, userDoc)
       } catch (e) {
         console.log(e)
         return done(e)

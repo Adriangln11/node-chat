@@ -26,7 +26,7 @@ app.use(express.static(join(__dirname, 'public')))
 
 app.use(
   session({
-    secret: 'qwerty',
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
   })
@@ -38,7 +38,7 @@ app.use(flash())
 app.use((req, res, next) => {
   app.locals.signUpMessage = req.flash('signUpMessage')
   app.locals.logInMessage = req.flash('logInMessage')
-  app.locals.user = req.user
+  app.locals.username = req.flash('username')
   next()
 })
 

@@ -13,7 +13,7 @@ input {
   overflow: hidden;
   background-color: #f3f3f3;
   border-radius: 10px;
-  border: 1px solid #333;
+  border: 1px solid #4a9dec;
   transition: all 0.5s;
 }
 
@@ -32,6 +32,7 @@ button {
   border-radius: 8px;
   width: 100px;
   height: 45px;
+  font-weight: bold;
   transition: 0.3s;
 }
 

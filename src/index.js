@@ -10,6 +10,7 @@ const io = new Server(server)
 
 io.on('connection', (socket) => {
   console.log('New connection established', socket.id)
+  app.locals.socketId = socket.id
   socket.emit('server:connect', {
     id: socket.id,
   })
