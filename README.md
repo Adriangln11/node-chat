@@ -21,5 +21,3 @@ Aplicación de chat en linea utilizando solo `websockets`, autenticación con `P
 - Abre una terminal en tu editor o en la carpeta e instala las dependencias
 - Ejecuta el comando `npm run start`
 - Abre una ventana en localhost
-
-<img src="https://i.ibb.co/hXrQmnn/App-Brave-3-23-2023-4-33-30-PM.png" alt="App-Brave-3-23-2023-4-33-30-PM" border="0">
