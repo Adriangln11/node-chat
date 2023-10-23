@@ -1,26 +1,10 @@
 const socket = io()
 const submit = document.getElementById('submit')
 const input = document.getElementById('input')
-const username = document.getElementById('username')
+//const userImage = document.getElementById('userImage')
 const messages = document.getElementById('messages')
 const typing = document.getElementById('typing')
 
-window.addEventListener('load', () => {
-  socket.on('server:connect', (data) => {
-    username.innerText = data.id
-  })
-  username.innerText = socket.socketId
-})
-
-input.addEventListener('keydown', (e) => {
-  socket.emit('chat:typing', { user: socket.id })
-  if (e.key == 'Enter') {
-    sendMessage()
-  }
-})
-submit.addEventListener('click', () => {
-  sendMessage()
-})
 socket.on('chat:message', (data) => {
   typing.innerText = ''
   const date = new Date()
@@ -70,3 +54,21 @@ const sendMessage = () => {
   })
   input.value = ''
 }
+
+// window.addEventListener('load', async () => {
+//   socket.on('server:connect', (data) => {
+//     username.innerText = data.id
+//   })
+//   username.innerText = socket.socketId
+
+// })
+
+input.addEventListener('keydown', (e) => {
+  socket.emit('chat:typing', { user: socket.id })
+  if (e.key == 'Enter') {
+    sendMessage()
+  }
+})
+submit.addEventListener('click', () => {
+  sendMessage()
+})

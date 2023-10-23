@@ -2,7 +2,6 @@ import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import bcrypt from 'bcrypt'
 import UserModel from '../models/user.js'
-import app from '../app.js'
 
 passport.serializeUser(function (user, done) {
   return done(null, user.id)

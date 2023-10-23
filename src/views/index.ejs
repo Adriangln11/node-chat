@@ -21,21 +21,25 @@
     <title><%= title %></title>
   </head>
   <body class="vh-100">
-    <nav class="navbar bg-dark d-flex justify-content-space-between">
-      
-        
-          <strong class="navbar-brand text-white mx-3" id="username"></strong>
-          <%= username %>
-          </strong> 
-      
+    <nav
+      class="navbar bg-dark d-flex justify-content-space-between align-items-center"
+    >
+      <div class="align-items-center d-flex">
+        <% if (user) { %>
+
+        <small class="navbar-brand text-white mx-3 w-75"
+          ><%= user.email %></small
+        >
+        <% }%>
+      </div>
 
       <a href="/logout" class="btn btn-danger mx-3">LogOut</a>
     </nav>
 
-    <main class="vw-100 vh-100 p-3">
+    <main class="vw-100 h-75 p-3">
       <div
         id="messages"
-        class="d-flex flex-column p-3 h-75 overflow-y-auto"
+        class="d-flex flex-column p-3 h-100 overflow-y-auto"
       ></div>
 
       <div

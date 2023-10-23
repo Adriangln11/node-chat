@@ -38,7 +38,7 @@ app.use(flash())
 app.use((req, res, next) => {
   app.locals.signUpMessage = req.flash('signUpMessage')
   app.locals.logInMessage = req.flash('logInMessage')
-  app.locals.username = req.flash('username')
+  app.locals.user = req.user
   next()
 })
 

@@ -10,7 +10,7 @@ router
       if (req.isAuthenticated()) {
         return next()
       }
-      return res.render('signup', { title: 'Chat | SignUp' })
+      return res.render('login', { title: 'Chat | login' })
     },
     (req, res) => {
       return res.render('index', { title: 'Chat | Online' })
@@ -36,6 +36,7 @@ router
       failureRedirect: '/login',
       successRedirect: '/',
       failureFlash: true,
+      successFlash: true,
     })
   )
   .get('/logout', (req, res, next) => {
